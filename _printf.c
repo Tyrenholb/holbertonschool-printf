@@ -25,14 +25,14 @@ int _printf(const char *format, ...)
 
 	while (format[i] != '\0')
 	{
-		/* Handle %% */
+		/* Handle %% Both Tyren & Albert */
 		if (format[i] == '%' && format[i + 1] == '%')
 		{
 			write(1, "%", 1);
 			count++;
 			i++;
 		}
-		/* Handle %c */
+		/* Handle %c - Alberts code*/
 		else if (format[i] == '%' && format[i + 1] == 'c')
 		{
 			c = (char)va_arg(args, int);
@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 			count++;
 			i++;
 		}
-		/* Handle %s */
+		/* Handle %s - Tyrens code*/
 		else if (format[i] == '%' && format[i + 1] == 's')
 		{
 			str = va_arg(args, char *);
@@ -59,7 +59,7 @@ int _printf(const char *format, ...)
 
 			i++;
 		}
-		/* Handle normal text */
+		/* Handle normal text - Both Tyren & Albert */
 		else
 		{
 			write(1, &format[i], 1);
