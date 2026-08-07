@@ -12,12 +12,11 @@ int main(void)
     int len;
     int len2;
     unsigned int ui;
-    void *addr;
-
+    //void *addr;
     len = _printf("Let's try to printf a simple sentence.\n");
     len2 = printf("Let's try to printf a simple sentence.\n");
     ui = (unsigned int)INT_MAX + 1024;
-    addr = (void *)0x7ffe637541f0;
+    //addr = (void *)0x7ffe637541f0;
     _printf("Length:[%d, %i]\n", len, len);
     printf("Length:[%d, %i]\n", len2, len2);
     _printf("Negative:[%d]\n", -762534);
@@ -32,5 +31,13 @@ int main(void)
     printf("Character:[%c]\n", 'H');
     _printf("String:[%s]\n", "I am a string !");
     printf("String:[%s]\n", "I am a string !");
+    _printf("Progress: 100%% complete\n");
     return (0);
 }
+
+/* %u is the format specifier for an unsigned decimal integer - postive or zero ints only. */
+/* %d is a format specifier used as a placeholder for a signed decimal integer. */
+/* %i = for specifiier used to represent a single integer */
+/* %s is a format specifier used to represent text strings */
+/* %x is a format specifier used to print or read unsigned integers in hexadecimal (base-16) format using lowercase letters */
+/* %p format specifier is used within input/output functions like printf() and scanf() to print or read raw memory addresses */
