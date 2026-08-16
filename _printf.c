@@ -1,42 +1,46 @@
 #include "main.h"
-
 /**
- * _printf - Prints normal text, characters, strings, and percent signs.
- * @format: The format string.
+ * _printf - Produces output according to a format
+ * @format: Format string
  *
- * Return: Number of characters printed.
+ * Return: Number of characters printed
  */
-
-
-
-
- format_t formats[] = {
-	{'c', print_char},
-	{'s', print_string},
-	{'d', print_number},
-	{'i', print_number},
-	{'%', print_percent},
-	{'\0', NULL}
-};
-
 int _printf(const char *format, ...)
 {
 	va_list args;
-	char *str;
-	char c;
+	int (*func)(va_list);
 	int i;
-	int j;
 	int count;
-
-	int number;
-	int div;
-	int digit;
-
-	i = 0;
-	count = 0;
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(args, format);
-
+	i = 0;
+	count = 0;
+	while (format[i] != '\0')
+	{
+		if (format[i] != '%')
+			count += write(1, &format[i], 1);
+		else
+		{
+			if (format[i + 1] == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
+			i++;
+			func = get_print_func(format[i]);
+			if (func != NULL)
+				count += func(args);
+			else
+			{
+				write(1, "%", 1);
+				write(1, &format[i], 1);
+				count += 2;
+			}
+		}
+		i++;
+	}
+	va_end(args);
+	return (count);
+}

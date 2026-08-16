@@ -1,13 +1,12 @@
+#include "main.h"
+
 /**
  * print_char - Prints a character
- * print_string - Prints a string
- * print_percent - Prints a percent sign
  * @args: List of arguments
  *
  * Return: Number of characters printed
  */
-
- int print_char(va_list args)
+int print_char(va_list args)
 {
 	char c;
 
@@ -17,6 +16,12 @@
 	return (1);
 }
 
+/**
+ * print_string - Prints a string
+ * @args: List of arguments
+ *
+ * Return: Number of characters printed
+ */
 int print_string(va_list args)
 {
 	char *str;
@@ -35,6 +40,13 @@ int print_string(va_list args)
 
 	return (i);
 }
+
+/**
+ * print_percent - Prints a percent sign
+ * @args: List of arguments
+ *
+ * Return: Number of characters printed
+ */
 int print_percent(va_list args)
 {
 	(void)args;
@@ -42,3 +54,4 @@ int print_percent(va_list args)
 	write(1, "%", 1);
 
 	return (1);
+}

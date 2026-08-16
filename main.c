@@ -44,8 +44,6 @@ int main(void)
      printf("[%d]\n", 0);
     _printf("[%d]\n", 0); 
 
-     _printf("Postuve:[%d]\n", 762534);
-    printf("Postuve:[%d]\n", 762534);
 
     return(0);
 }
